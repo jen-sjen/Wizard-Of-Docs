@@ -19,23 +19,19 @@ if __name__ == "__main__":
 
 # EXAPLINATION:
 In the following problem, 
-1) Sort all intervals in increasing order of start time.
-2) Traverse sorted intervals starting from first interval, 
-   do following for every interval.
-      a) If current interval is not first interval and it 
-         overlaps with previous interval, then merge it with
-         previous interval. Keep doing it while the interval
-         overlaps with the previous one.         
-      b) Else add current interval to output list of intervals.
+1) Firstly, Sort the given list according to the start time mentioned in "intervals[i] = [starti, endi]".
+2) Traverse sorted intervals starting in iteration(for loop), 
+      a) If the result is empty or the current interval endtime is less than the start of the interval interator, then add the interval directly to the result as they don't overlap     
+      b) else change the end time of current interval with the largest of the two intervals end times possible.
       
       
- For example, let the given set of intervals be {{1,3}, {2,4}, {5,7}, {6,8}}. The intervals {1,3} and {2,4} overlap with each other, so they should be merged and become {1, 4}. Similarly, {5, 7} and {6, 8} should be merged and become {5, 8}
+ For example, let the given set of intervals be {{1,5}, {3,6}, {9,11}, {10,18}}. The intervals {1,5} and {3,6} overlap with each other, so they should be merged and become {1, 6}. Similarly, {9,11} and {10,18} should be merged and become {9, 18}
  
 # Other examples:
-Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
-Output: [[1,6],[8,10],[15,18]]
-Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+Input: intervals = [[1,7],[2,6],[8,11],[9,15]]
+Output: [[1,6],[8,15]]
+Explanation: Since intervals [1,7] and [2,6] overlaps, merge them into [1,6].Similarly, merge intervals [8,11] and [9,15] to [8,15]
 
-Input: intervals = [[1,4],[4,5]]
-Output: [[1,5]]
-Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+Input: intervals = [[1,10],[10,15]]
+Output: [[1,15]]
+Explanation: Intervals [1,10] and [10,15] are overlapping at the number 10, merge the intervals to [1,15].
